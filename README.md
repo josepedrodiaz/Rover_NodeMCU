@@ -19,3 +19,10 @@ Implementa la posibilidad de dirigir un rover basado en llamadas HTTP
 
 
 Es necesario configurar IP y puerto al que responde el robot, el original responde a 192.168.2.144:444
+
+
+## To do
+* Agregar una cámara IP alimentada a baterías
+* Adicionar un relay que encienda y apague esa cámara
+* Adicionar sistema pan & titl para la cámara
+* Que el sistema se apague al alcanzar el umbral de la bateria de LiPo
