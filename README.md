@@ -1,13 +1,13 @@
 # ESP8266-12 based Rover
 
-Implementa la posibilidad de manejar remotamente un rover basado en lamadas a una API HTTP
+Implementa la posibilidad de dirigir un rover basado en llamadas HTTP
 
 
 ## Componentes
-* Esp8266-12
+* Esp8266-12 
 * Chasis
 * Motores DC 6v con reducción
-* Batería de Polímero de Litio
+* Batería LiPo 2s
 * IC L293D - (doble puente H)
 
 ## URLS
@@ -18,4 +18,4 @@ Implementa la posibilidad de manejar remotamente un rover basado en lamadas a un
 /frena
 
 
-Es necesario configurar la IP ala que responde, el original responde a 192.168.2.144:444
+Es necesario configurar IP y puerto al que responde el robot, el original responde a 192.168.2.144:444
