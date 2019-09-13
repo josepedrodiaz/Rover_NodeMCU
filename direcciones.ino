@@ -1,4 +1,5 @@
 void handleRoot() {
+  //Responde al llamado a la raiz ("/") del sitio
    // Prepare the response for index page
   String html = "<script>"
                 "function mobileCheck() {"
@@ -39,13 +40,14 @@ void handleNotFound(){
 //Setup all urls associated with actions
 void setUrls(){
 
+
   server.on("/adelante", [](){
     digitalWrite(pin1A, HIGH);
     digitalWrite(pin1B, LOW);
     digitalWrite(pin2A, HIGH);
     digitalWrite(pin2B, LOW);
     
-    server.send(200, "text/html", "this works as well");
+    server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia adelante\"");
   });
   
   server.on("/atras", [](){
@@ -54,7 +56,7 @@ void setUrls(){
     digitalWrite(pin2A, LOW);
     digitalWrite(pin2B, HIGH);    
 
-    server.send(200, "text/html", "this works as well");
+    server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia atrás\"");
   });
   
   server.on("/izquierda", [](){
@@ -63,7 +65,7 @@ void setUrls(){
     digitalWrite(pin2A, LOW);
     digitalWrite(pin2B, LOW);  
     
-    server.send(200, "text/html", "this works as well");
+    server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia la izquierda\"");
   });
   
   server.on("/derecha", [](){
@@ -72,7 +74,7 @@ void setUrls(){
     digitalWrite(pin2A, HIGH);
     digitalWrite(pin2B, LOW);  
     
-    server.send(200, "text/html", "this works as well");
+    server.send(200, "text/html",  "{\"mensaje\": \"El robot está moviéndose hacia la derecha\"");
   });
   
 server.on("/frena", [](){
@@ -81,7 +83,7 @@ server.on("/frena", [](){
     digitalWrite(pin2A, LOW);
     digitalWrite(pin2B, LOW);    
     
-    server.send(200, "text/html", "this works as well");
+    server.send(200, "text/html", "{\"mensaje\": \"El robot ha frenado\"");
   });
   
 server.on("/loco-derecha", [](){
@@ -90,7 +92,7 @@ server.on("/loco-derecha", [](){
     digitalWrite(pin2A, HIGH);
     digitalWrite(pin2B, LOW); 
     
-    server.send(200, "text/html", "this works as well");
+    server.send(200, "text/html",  "{\"mensaje\": \"El robot gira sobre su eje hacia la derecha\"");
   });
   
 server.on("/loco-izquierda", [](){
@@ -99,7 +101,7 @@ server.on("/loco-izquierda", [](){
     digitalWrite(pin2A, LOW);
     digitalWrite(pin2B, HIGH); 
     
-    server.send(200, "text/html", "this works as well");
+    server.send(200, "text/html",  "{\"mensaje\": \"El robot gira sobre su eje hacia la izquierda\"");
   });
 //Battery measurement
 server.on("/battCheck", [](){
@@ -108,6 +110,7 @@ server.on("/battCheck", [](){
   });
 }
 
+// frena el robot
 void frena(){
     digitalWrite(pin1A, LOW);
     digitalWrite(pin1B, LOW);
