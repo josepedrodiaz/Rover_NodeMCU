@@ -47,7 +47,7 @@ void setUrls(){
     digitalWrite(pin2A, HIGH);
     digitalWrite(pin2B, LOW);
     
-    server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia adelante\"");
+    server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia adelante\"}");
   });
   
   server.on("/atras", [](){
@@ -56,7 +56,7 @@ void setUrls(){
     digitalWrite(pin2A, LOW);
     digitalWrite(pin2B, HIGH);    
 
-    server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia atrás\"");
+    server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia atrás\"}");
   });
   
   server.on("/izquierda", [](){
@@ -65,7 +65,7 @@ void setUrls(){
     digitalWrite(pin2A, LOW);
     digitalWrite(pin2B, LOW);  
     
-    server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia la izquierda\"");
+    server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia la izquierda\"}");
   });
   
   server.on("/derecha", [](){
@@ -74,7 +74,7 @@ void setUrls(){
     digitalWrite(pin2A, HIGH);
     digitalWrite(pin2B, LOW);  
     
-    server.send(200, "text/html",  "{\"mensaje\": \"El robot está moviéndose hacia la derecha\"");
+    server.send(200, "text/html",  "{\"mensaje\": \"El robot está moviéndose hacia la derecha\"}");
   });
   
 server.on("/frena", [](){
@@ -83,7 +83,7 @@ server.on("/frena", [](){
     digitalWrite(pin2A, LOW);
     digitalWrite(pin2B, LOW);    
     
-    server.send(200, "text/html", "{\"mensaje\": \"El robot ha frenado\"");
+    server.send(200, "text/html", "{\"mensaje\": \"El robot ha frenado\"}");
   });
   
 server.on("/loco-derecha", [](){
@@ -92,7 +92,7 @@ server.on("/loco-derecha", [](){
     digitalWrite(pin2A, HIGH);
     digitalWrite(pin2B, LOW); 
     
-    server.send(200, "text/html",  "{\"mensaje\": \"El robot gira sobre su eje hacia la derecha\"");
+    server.send(200, "text/html",  "{\"mensaje\": \"El robot gira sobre su eje hacia la derecha\"}");
   });
   
 server.on("/loco-izquierda", [](){
