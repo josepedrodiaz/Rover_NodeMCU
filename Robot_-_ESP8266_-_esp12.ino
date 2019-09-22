@@ -1,14 +1,24 @@
 #include <ESP8266WiFi.h>
-#include <WiFiClient.h>
-#include <ESP8266WebServer.h>
-#include <ESP8266mDNS.h>
-#include <Servo.h> 
- 
-const char* ssid = "Cisco68896";
-const char* password = "elperrococoliso";
-MDNSResponder mdns;
 
+//Init Web Server
+#include <ESP8266WebServer.h>
 ESP8266WebServer server(444);
+
+#include <Servo.h> 
+#include <DNSServer.h>
+#include <WiFiManager.h>  
+
+//for LED status WiFi
+#include <Ticker.h>
+Ticker ticker;
+void tick()
+{
+  //toggle state
+  int state = digitalRead(2);  // get the current state of GPIO1 pin
+  digitalWrite(2, !state);     // set pin to the opposite state
+}
+
+
 //Motores
 //Motor1
 int pin1A = 12;
@@ -25,11 +35,8 @@ int servoVerticalPos = 0;//servo init postion
 
  
 void setup(void){
-  
-  
+
   Serial.begin(115200);
-  WiFi.begin(ssid, password);
-  Serial.println("");
   
   //Servos Setup
   servoHorizontal.attach(14);  // attaches the servo on pin 9 to the servo object 
@@ -52,27 +59,6 @@ void setup(void){
   digitalWrite(12, 0);
   pinMode(13, OUTPUT);
   digitalWrite(13, 0);
-
-  // Wait for connection
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  
-  Serial.println("");
-  Serial.print("Connected to ");
-  Serial.println(ssid);
-  Serial.print("IP address: ");
-  Serial.println(WiFi.localIP());
-  
-  Serial.print("Seteando IP estatica: ");
-  //set static ip part
-  WiFi.config(IPAddress(192,168,2,144),IPAddress(192,168,2,1),IPAddress(255,255,255,0));
-  Serial.println(WiFi.localIP());
-  
-  if (mdns.begin("esp8266", WiFi.localIP())) {
-    Serial.println("MDNS responder started");
-  }
   
   //show default index page
   server.on("/", handleRoot);
@@ -89,14 +75,45 @@ void setup(void){
   //ej.: /frena all 4 motor pins (2,0,4,5) seted to LOW
   setUrls();
   
-  //Interfaz de usuario
-    setUX();
+  //Crea lnterfaz de usuario
+  setUX();
   
   //handle 404
   server.onNotFound(handleNotFound);
   
   server.begin();
   Serial.println("HTTP server started");
+  
+  //set led pin as output
+  pinMode(2, OUTPUT);
+  // start ticker with 0.5 because we start in AP mode and try to connect
+  ticker.attach(0.6, tick);
+
+  //WiFiManager
+  //Local intialization. Once its business is done, there is no need to keep it around
+  WiFiManager wifiManager;
+  //reset settings - for testing
+  wifiManager.resetSettings();
+
+  //set callback that gets called when connecting to previous WiFi fails, and enters Access Point mode
+  wifiManager.setAPCallback(configModeCallback);
+
+  //fetches ssid and pass and tries to connect
+  //if it does not connect it starts an access point with the specified name
+  //here  "AutoConnectAP"
+  //and goes into a blocking loop awaiting configuration
+  if (!wifiManager.autoConnect()) {
+    Serial.println("failed to connect and hit timeout");
+    //reset and try again, or maybe put it to deep sleep
+    ESP.reset();
+    delay(1000);
+  }
+
+  //if you get here you have connected to the WiFi
+  Serial.println("connected...yeey :)");
+  ticker.detach();
+  //keep LED on
+  digitalWrite(2, LOW);
 }
  
 void loop(void){//LOOP@!
