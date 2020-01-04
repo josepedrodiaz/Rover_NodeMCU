@@ -1,10 +1,10 @@
-# ESP8266-12 based Rover
+# Node MCU based Rover
 
-Implementa la posibilidad de dirigir un rover basado en llamadas HTTP
+Implements the possibility of driving a DY rover through a REST API
 
 
 ## Componentes
-* Esp8266-12 
+* Node MCU board
 * Chasis
 * Motores DC 6v con reducción
 * Batería LiPo 2s
