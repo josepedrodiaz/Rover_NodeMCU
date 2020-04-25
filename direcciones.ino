@@ -42,46 +42,61 @@ void setUrls(){
 
 
   server.on("/adelante", [](){
+    server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia adelante\"}");
+    
     digitalWrite(PWMA, HIGH); 
     digitalWrite(DA, LOW); 
     digitalWrite(PWMB, HIGH); 
     digitalWrite(DB, LOW); 
+
+    //frena automatico pal nie
+    delayMicroseconds(300000);
+    frena();
     
-    server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia adelante\"}");
   });
   
   server.on("/atras", [](){
+    server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia atrás\"}");
+    
     digitalWrite(PWMA, HIGH); 
     digitalWrite(DA, HIGH); 
     digitalWrite(PWMB, HIGH); 
-    digitalWrite(DB, HIGH);    
+    digitalWrite(DB, HIGH);
 
-    server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia atrás\"}");
+    //frena automatico pal nie
+    delayMicroseconds(300000);
+    frena();
   });
   
   server.on("/izquierda", [](){
+    server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia la izquierda\"}");
     
     digitalWrite(PWMA, 450); 
     digitalWrite(DA, LOW); 
     digitalWrite(PWMB, 450); 
     digitalWrite(DB, HIGH); 
     
-    server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia la izquierda\"}");
+    //frena automatico pal nie
+    delayMicroseconds(100000);
+    frena();
   });
   
   server.on("/derecha", [](){
+    server.send(200, "text/html",  "{\"mensaje\": \"El robot está moviéndose hacia la derecha\"}");
+    
     digitalWrite(PWMA, 450); 
     digitalWrite(DA, HIGH); 
     digitalWrite(PWMB, 450); 
     digitalWrite(DB, LOW); 
     
-    server.send(200, "text/html",  "{\"mensaje\": \"El robot está moviéndose hacia la derecha\"}");
+    //frena automatico pal nie
+    delayMicroseconds(100000);
+    frena();
   });
   
 server.on("/frena", [](){
-    frena();   
-    
     server.send(200, "text/html", "{\"mensaje\": \"El robot ha frenado\"}");
+    frena();   
   });
   
 server.on("/loco-derecha", [](){
