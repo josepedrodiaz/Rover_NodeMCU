@@ -42,7 +42,6 @@ void setUrls(){
 
 
   server.on("/adelante", [](){
-    server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia adelante\"}");
     
     digitalWrite(PWMA, HIGH); 
     digitalWrite(DA, LOW); 
@@ -53,10 +52,11 @@ void setUrls(){
     delayMicroseconds(300000);
     frena();
     
+    server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia adelante\"}");
+    
   });
   
   server.on("/atras", [](){
-    server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia atrás\"}");
     
     digitalWrite(PWMA, HIGH); 
     digitalWrite(DA, HIGH); 
@@ -66,10 +66,11 @@ void setUrls(){
     //frena automatico pal nie
     delayMicroseconds(300000);
     frena();
+
+    server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia atrás\"}");
   });
   
   server.on("/izquierda", [](){
-    server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia la izquierda\"}");
     
     digitalWrite(PWMA, 450); 
     digitalWrite(DA, LOW); 
@@ -79,10 +80,11 @@ void setUrls(){
     //frena automatico pal nie
     delayMicroseconds(100000);
     frena();
+
+    server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia la izquierda\"}");
   });
   
   server.on("/derecha", [](){
-    server.send(200, "text/html",  "{\"mensaje\": \"El robot está moviéndose hacia la derecha\"}");
     
     digitalWrite(PWMA, 450); 
     digitalWrite(DA, HIGH); 
@@ -92,6 +94,8 @@ void setUrls(){
     //frena automatico pal nie
     delayMicroseconds(100000);
     frena();
+
+    server.send(200, "text/html",  "{\"mensaje\": \"El robot está moviéndose hacia la derecha\"}");
   });
   
 server.on("/frena", [](){
