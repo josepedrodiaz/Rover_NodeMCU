@@ -1,6 +1,0 @@
-{
-    "port": "/dev/cu.wchusbserial1420",
-    "board": "esp8266:esp8266:d1",
-    "configuration": "CpuFrequency=80,UploadSpeed=921600,FlashSize=4M3M",
-    "sketch": "Robot_-_ESP8266_-_esp12.ino"
-}

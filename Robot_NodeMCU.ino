@@ -4,29 +4,19 @@
 #include <ESP8266WebServer.h>
 ESP8266WebServer server(444);
 
+//Save IP Adress value
+IPAddress ip; 
+
 #include <Servo.h> 
 #include <DNSServer.h>
 #include <WiFiManager.h>  
 
-//for LED status WiFi
-#include <Ticker.h>
-Ticker ticker;
-void tick()
-{
-  //toggle state
-  int state = digitalRead(2);  // get the current state of GPIO1 pin
-  digitalWrite(2, !state);     // set pin to the opposite state
-}
-
 
 //Motores
-//Motor1
-int pin1A = 12;
-int pin1B = 13;
-
-//Motor2
-int pin2A = 4;
-int pin2B = 5;
+int PWMA=5;//Right side 
+int PWMB=4;//Left side 
+int DA=0;//Right reverse 
+int DB=2;//Left reverse 
 
 //Servos
 Servo servoHorizontal,servoVertical;
@@ -44,19 +34,17 @@ void setup(void){
   
   
   // prepare Pins
-  //Motors
-  pinMode(pin1A, OUTPUT);
-  digitalWrite(pin1A, 0);
-  pinMode(pin1B, OUTPUT);
-  digitalWrite(pin1B, 0);
-  pinMode(pin2A, OUTPUT);
-  digitalWrite(pin2A, 0);
-  pinMode(pin2B, OUTPUT);
-  digitalWrite(pin2B, 0);
+  //Motors init
+  pinMode(PWMA, OUTPUT); 
+  digitalWrite(PWMA, LOW);
+  pinMode(PWMB, OUTPUT);
+  digitalWrite(PWMB, LOW); 
+  pinMode(DA, OUTPUT); 
+  digitalWrite(DA, LOW);
+  pinMode(DB, OUTPUT);
+  digitalWrite(DB, LOW);
   
   //Extra PIns 2 y 13 (lights - camera switchs - to do -)
-  pinMode(12, OUTPUT);
-  digitalWrite(12, 0);
   pinMode(13, OUTPUT);
   digitalWrite(13, 0);
   
@@ -83,17 +71,12 @@ void setup(void){
   
   server.begin();
   Serial.println("HTTP server started");
-  
-  //set led pin as output
-  pinMode(2, OUTPUT);
-  // start ticker with 0.5 because we start in AP mode and try to connect
-  ticker.attach(0.6, tick);
 
   //WiFiManager
   //Local intialization. Once its business is done, there is no need to keep it around
   WiFiManager wifiManager;
   //reset settings - for testing
-  wifiManager.resetSettings();
+  //wifiManager.resetSettings();
 
   //set callback that gets called when connecting to previous WiFi fails, and enters Access Point mode
   wifiManager.setAPCallback(configModeCallback);
@@ -111,7 +94,9 @@ void setup(void){
 
   //if you get here you have connected to the WiFi
   Serial.println("connected...yeey :)");
-  ticker.detach();
+  //print the local IP address
+  ip = WiFi.localIP();
+  Serial.println(ip);
   //keep LED on
   digitalWrite(2, LOW);
 }

@@ -42,64 +42,62 @@ void setUrls(){
 
 
   server.on("/adelante", [](){
-    digitalWrite(pin1A, HIGH);
-    digitalWrite(pin1B, LOW);
-    digitalWrite(pin2A, HIGH);
-    digitalWrite(pin2B, LOW);
+    digitalWrite(PWMA, HIGH); 
+    digitalWrite(DA, LOW); 
+    digitalWrite(PWMB, HIGH); 
+    digitalWrite(DB, LOW); 
     
     server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia adelante\"}");
   });
   
   server.on("/atras", [](){
-    digitalWrite(pin1A, LOW);
-    digitalWrite(pin1B, HIGH);
-    digitalWrite(pin2A, LOW);
-    digitalWrite(pin2B, HIGH);    
+    digitalWrite(PWMA, HIGH); 
+    digitalWrite(DA, HIGH); 
+    digitalWrite(PWMB, HIGH); 
+    digitalWrite(DB, HIGH);    
 
     server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia atrás\"}");
   });
   
   server.on("/izquierda", [](){
-    digitalWrite(pin1A, HIGH);
-    digitalWrite(pin1B, LOW);
-    digitalWrite(pin2A, LOW);
-    digitalWrite(pin2B, LOW);  
+    
+    digitalWrite(PWMA, 450); 
+    digitalWrite(DA, LOW); 
+    digitalWrite(PWMB, 450); 
+    digitalWrite(DB, HIGH); 
     
     server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia la izquierda\"}");
   });
   
   server.on("/derecha", [](){
-    digitalWrite(pin1A, LOW);
-    digitalWrite(pin1B, LOW);
-    digitalWrite(pin2A, HIGH);
-    digitalWrite(pin2B, LOW);  
+    digitalWrite(PWMA, 450); 
+    digitalWrite(DA, HIGH); 
+    digitalWrite(PWMB, 450); 
+    digitalWrite(DB, LOW); 
     
     server.send(200, "text/html",  "{\"mensaje\": \"El robot está moviéndose hacia la derecha\"}");
   });
   
 server.on("/frena", [](){
-    digitalWrite(pin1A, LOW);
-    digitalWrite(pin1B, LOW);
-    digitalWrite(pin2A, LOW);
-    digitalWrite(pin2B, LOW);    
+    frena();   
     
     server.send(200, "text/html", "{\"mensaje\": \"El robot ha frenado\"}");
   });
   
 server.on("/loco-derecha", [](){
-    digitalWrite(pin1A, LOW);
-    digitalWrite(pin1B, HIGH);
-    digitalWrite(pin2A, HIGH);
-    digitalWrite(pin2B, LOW); 
+    digitalWrite(PWMA, HIGH); 
+    digitalWrite(DA, HIGH); 
+    digitalWrite(PWMB, LOW); 
+    digitalWrite(DB, LOW); 
     
     server.send(200, "text/html",  "{\"mensaje\": \"El robot gira sobre su eje hacia la derecha\"}");
   });
   
 server.on("/loco-izquierda", [](){
-    digitalWrite(pin1A, HIGH);
-    digitalWrite(pin1B, LOW);
-    digitalWrite(pin2A, LOW);
-    digitalWrite(pin2B, HIGH); 
+    digitalWrite(PWMA, LOW); 
+    digitalWrite(DA, LOW); 
+    digitalWrite(PWMB, HIGH); 
+    digitalWrite(DB, HIGH);
     
     server.send(200, "text/html",  "{\"mensaje\": \"El robot gira sobre su eje hacia la izquierda\"");
   });
@@ -112,8 +110,8 @@ server.on("/battCheck", [](){
 
 // frena el robot
 void frena(){
-    digitalWrite(pin1A, LOW);
-    digitalWrite(pin1B, LOW);
-    digitalWrite(pin2A, LOW);
-    digitalWrite(pin2B, LOW);
+    digitalWrite(PWMA, LOW); 
+    digitalWrite(DA, LOW); 
+    digitalWrite(PWMB, LOW); 
+    digitalWrite(DB, LOW); 
 }
