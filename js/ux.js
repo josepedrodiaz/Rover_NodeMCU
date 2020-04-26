@@ -50,7 +50,7 @@ function sendCommand(command){
     $('#statusDiv').show();
     ajaxRunning = true;
         $.ajax({type: 'GET',
-                    url: command,
+                    url: command\r\n,"
                     success:function() {
                         $('#statusDiv').hide();
                         ajaxRunning = false;
