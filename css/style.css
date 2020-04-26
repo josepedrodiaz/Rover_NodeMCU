@@ -1,0 +1,10 @@
+body{
+    background-color:rgba(0,0,0,0.6);
+    display: table;
+}
+h1{
+    color:#03a9f4;
+    text-align:center;
+    display: table-cell;
+    vertical-align: middle;
+}
