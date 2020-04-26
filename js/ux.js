@@ -41,7 +41,52 @@ $(function() {
                     });
       }
     });
+
+
 });
+
+function sendCommand(command){  
+    if(ajaxRunning != true){
+    $('#statusDiv').show();
+    ajaxRunning = true;
+        $.ajax({type: 'GET',
+                    url: command\r\n,"
+                    success:function() {
+                        $('#statusDiv').hide();
+                        ajaxRunning = false;
+                      },
+                        error: function() {
+                        alert('Algo anduvo mal');
+                        }
+                    });
+        }
+    }
+
+    function frena() {
+        sendCommand('frena')
+    }
+    listener.simple_combo('up', function() {
+        sendCommand('adelante')
+    });
+
+    listener.simple_combo('left', function() {
+        sendCommand('izquierda')
+    });
+    listener.simple_combo('right', function() {
+        sendCommand('derecha')
+    });
+    listener.simple_combo('down', function() {
+        sendCommand('atras')
+    });
+    listener.simple_combo('l', function() {
+        sendCommand('loco-izuierda')
+    });
+    listener.simple_combo('r', function() {
+        sendCommand('loco-derecha')
+    });
+    listener.simple_combo('space', function() {
+        frena();
+    });
 
 //Analytics
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
