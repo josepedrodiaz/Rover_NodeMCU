@@ -14,7 +14,7 @@ void setUX(){
 "   <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js\"></script>\r\n"
 "   <script src=\"//code.jquery.com/ui/1.11.4/jquery-ui.js\"></script>\r\n"
 "   <script src=\"https://combinatronics.com/dmauro/Keypress/development/keypress-2.1.5.min.js\"></script>\r\n"
-"   <script src=\"https://combinatronics.com//josepedrodiaz/Rover_NodeMCU/master/js/ux.js\"></script>\r\n"
+"   <script src=\"https://combinatronics.com/josepedrodiaz/Rover_NodeMCU/master/js/ux.js\"></script>\r\n"
 "  <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css\" integrity=\"sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==\" crossorigin=\"anonymous\">\r\n"
 "  <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css\" integrity=\"sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX\" crossorigin=\"anonymous\">\r\n"
 "  <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js\" integrity=\"sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==\" crossorigin=\"anonymous\"></script>\r\n"
