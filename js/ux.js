@@ -55,7 +55,7 @@ function sendCommand(command){
                         $('#statusDiv').hide();
                         ajaxRunning = false;
                       },
-                        error: function() {
+                    error: function() {
                         alert('Algo anduvo mal');
                         }
                     });
