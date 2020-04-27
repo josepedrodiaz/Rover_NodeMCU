@@ -20,8 +20,8 @@ int DB=2;//Left reverse
 
 //Servos
 Servo servoHorizontal,servoVertical;
-int servoHorizontalPos = 0;//servo init postion
-int servoVerticalPos = 0;//servo init postion
+int servoHorizontalPos = 90;//servo init postion
+int servoVerticalPos = 90;//servo init postion
 
  
 void setup(void){
@@ -29,8 +29,8 @@ void setup(void){
   Serial.begin(115200);
   
   //Servos Setup
-  servoHorizontal.attach(14);  // attaches the servo on pin 9 to the servo object 
-  servoVertical.attach(16);  // attaches the servo on pin 9 to the servo object 
+  servoHorizontal.attach(16);  // attaches the servo on pin 9 to the servo object 
+  servoVertical.attach(5);  // attaches the servo on pin 9 to the servo object 
   
   
   // prepare Pins
