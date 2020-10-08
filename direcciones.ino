@@ -10,7 +10,7 @@ void handleRoot() {
                 "  return check;"
                 "}"
                 "if( mobileCheck() == true){"
-                "	location.href = '/mobile';"
+                "	location.href = '/app/index.html';"
                 "}else{"
                 "	location.href = '/desktop';"
                 "}"
@@ -41,7 +41,7 @@ void handleNotFound() {
 void setUrls() {
 
 
-  server.on("/adelante", []() {
+  server.on("/atras", []() {
 
     digitalWrite(PWMA, HIGH);
     digitalWrite(DA, LOW);
@@ -56,7 +56,7 @@ void setUrls() {
 
   });
 
-  server.on("/atras", []() {
+  server.on("/adelante", []() {
 
     digitalWrite(PWMA, HIGH);
     digitalWrite(DA, HIGH);
@@ -70,7 +70,7 @@ void setUrls() {
     server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia atrás\"}");
   });
 
-  server.on("/izquierda", []() {
+  server.on("/derecha", []() {
 
     digitalWrite(PWMA, 450);
     digitalWrite(DA, LOW);
@@ -84,7 +84,7 @@ void setUrls() {
     server.send(200, "text/html", "{\"mensaje\": \"El robot está moviéndose hacia la izquierda\"}");
   });
 
-  server.on("/derecha", []() {
+  server.on("/izquierda", []() {
 
     digitalWrite(PWMA, 450);
     digitalWrite(DA, HIGH);

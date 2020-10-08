@@ -1,14 +1,67 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Descangallado - Live II</title>
-    </head>
-<body style="background-color:rgba(0,0,0,0.6)">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DESCANGALLADO III - ES6 (?)</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <style type="text/css">
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
 
-    <div id="app"></div>    
-   
-    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    .item {
+        flex: 0 32%;
+        height: 100px;
+        margin-bottom: 2%; /* (100-32*3)/2 */
+    }
+    .hasButton{
+        display: flex;
+        justify-content: center;
+    }
+    .hasButton button{
+        width: 100%;
+    }
+    .disable-dbl-tap-zoom{
+    touch-action: manipulation;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <div class="item"></div>
+        <div class="item hasButton">
+            <button class="disable-dbl-tap-zoom" 
+                onclick="handleClick('adelante');">
+                <i class="material-icons">arrow_upward</i>
+            </button>
+        </div>
+        <div class="item"></div>
+        <div class="item hasButton">
+            <button class="disable-dbl-tap-zoom" 
+            onclick="handleClick('izquierda');">
+                <i class="material-icons">arrow_back</i>
+            </button>
+        </div>
+        <div class="item"></div>
+        <div class="item hasButton">
+            <button class="disable-dbl-tap-zoom" 
+            onclick="handleClick('derecha');">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </div>
+        <div class="item"></div>
+        <div class="item hasButton">
+            <button class="disable-dbl-tap-zoom" 
+            onclick="handleClick('atras');">
+                <i class="material-icons">arrow_downward</i>
+            </button>
+        </div>
+        <div class="item"></div>
+      </div>
     <script src="app.js"></script>
-</body>
+
+  </body>
 </html>

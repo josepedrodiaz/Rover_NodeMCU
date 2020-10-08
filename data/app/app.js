@@ -1,14 +1,5 @@
-'use strict';
-
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>HI</h1>
-      </div>
-    );
-  }
+function handleClick(adonde){
+  fetch('/'+adonde)
+  .then(response => response.json())
+  .then(data => console.log(data.mensaje));;
 }
-
-const domContainer = document.querySelector('#app');
-ReactDOM.render(App, domContainer);
